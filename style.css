@@ -88,3 +88,51 @@ a:focus-visible { outline: 2px solid var(--red); outline-offset: 2px; }
 @media (prefers-reduced-motion: reduce) {
   html { scroll-behavior: auto; }
 }
+
+/* sticky menu */
+nav { position: sticky; top: 0; z-index: 1; background: #fff; }
+nav a.here { color: var(--red); font-weight: bold; }
+section { scroll-margin-top: 90px; }
+
+.intro p { font-size: 1.12em; }
+.pull { padding-left: 16px; border-left: 4px solid var(--red); font-size: 1.15em; }
+
+.js-only { display: none; }
+.js .js-only { display: revert; }
+.js .tabs { display: flex; flex-wrap: wrap; gap: 8px; }
+[hidden] { display: none; }
+
+button {
+  padding: 8px 14px;
+  border: 2px solid var(--navy);
+  border-radius: 6px;
+  background: #fff;
+  color: var(--navy);
+  font: bold 15px "Trebuchet MS", Verdana, sans-serif;
+  cursor: pointer;
+}
+button:hover { background: #eef1f7; }
+button:focus-visible { outline: 3px solid var(--red); outline-offset: 2px; }
+.tabs button[aria-pressed="true"] { background: var(--navy); color: #fff; }
+
+.js .story { min-height: 250px; margin-top: 14px; padding: 4px 20px; background: #f1f4f9; border-radius: 10px; }
+.story h3 { margin: 14px 0 0; }
+.story .date { margin: 0; }
+
+.jump { margin: 20px 0; }
+.pit { height: 34px; background: #ecd9ae; }
+.distance { position: relative; width: 0; height: 100%; background: var(--red); }
+.distance.go { width: 97.1%; animation: leap 1.6s ease-out; }
+.jumper { position: absolute; right: -9px; top: 8px; width: 18px; height: 18px; border-radius: 50%; background: var(--navy); }
+.distance.go .jumper { animation: hop 1.6s ease-in-out; }
+@keyframes leap { from { width: 0; } }
+@keyframes hop {
+  0%, 33%, 66%, 100% { transform: translateY(0); }
+  16%, 50% { transform: translateY(-22px); }
+  83% { transform: translateY(-32px); }
+}
+.scale { display: flex; justify-content: space-between; font-size: 13px; color: #555; }
+.readout { margin: 10px 0; font-weight: bold; }
+.jump button { margin: 0 6px 6px 0; }
+@media (max-width: 500px) { .js .story { min-height: 380px; } nav { font-size: 14px; gap: 4px 14px; } }
+@media (prefers-reduced-motion: reduce) { .distance.go, .distance.go .jumper { animation: none; } }
